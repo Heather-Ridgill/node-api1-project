@@ -14,6 +14,17 @@ server.listen(4000, () => {
 
 server.use(express.json());
 
+
+server.get(`/api/users`, (req, res) => {
+    db.find()
+        .then(user => {
+            res.status(200).json(users);
+        })
+        .catch(err => {
+            res.status(500).json({error: "The users information could not be found..."});
+        });
+});
+
 //POST Request syntax
 
 server.post(`/api/users`, (req, res) => {
